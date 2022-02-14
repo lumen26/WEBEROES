@@ -1,7 +1,9 @@
 class JeSuisFort:
-
-    def __init__(self):
-        self.money = 100000
+    def __init__(self, client):
+        """
+        client is used to issue orders
+        """
+        self.client = client
 
     def process_candle(self, candle_msg:str):
         """This function is called when a new candle_msg is received.
