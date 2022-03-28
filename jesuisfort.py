@@ -18,24 +18,12 @@ class JeSuisFort:
         """
         candle_dict = json.loads(candle_msg)
         for k, v in candle_dict.items():
-            if 'AAPL' == k:
-                self.count_aapl += 1
-                self.total_aapl += v['c']
-               # print("moyenne : {self.total_aapl / self.count_aapl}")
-                #if v['c'] < self.previous_price and self.client.money > v['c']:
-                #    self.client.sell(k, 1)
-               # elif self.client.money > v['c']:
-               #     self.client.buy(k, 1)
-                #elif self.client.money < v['c']
-            if v['c'] < 735 :
+            if v['c'] <100 and self.client.money>v['c']:
                 self.client.buy(k,1)
-            if v['c'] > 800 :
-                self.client.sell(k,1)
-            #if v['c'] < 735 :
-               # self.client.sell(k,1)
+                self.stock= v['c']
+            if v['c'] >250  and self.client.actions[k]>1 and v['c']>self.stock:
+                self.client.sell(k,1) 
+         
             
-                   # printself.client.money ("vous avez pas assez d'argent") 
-                    #breakpoint()
 
-    def gains(self):
-        return self.money 
+               
